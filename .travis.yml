@@ -31,5 +31,5 @@ jobs:
       before_script:
         - gem install awesome_bot
       script:
-        - awesome_bot README.md --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship,blob/master
+        - $(git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)) | grep '.md' | xargs awesome_bot --allow-redirect --allow-dupe --skip-save-results --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship,blob/master
 
